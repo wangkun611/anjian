@@ -4,8 +4,9 @@
 #include <atlbase.h>
 
 void HookKeyboard();
+bool moveTo(int x, int y);
 
-namespace demo {
+namespace anjian {
 
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
