@@ -1,0 +1,27 @@
+{
+    "name": "anjian",
+    "description": "keyboard, mouse simulator",
+    "main": "index.js",
+    "author": "Wang Kun",
+    "version": "0.1.0",
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/wangkun611/anjian.git"
+    },
+    "bugs" : {
+        "url" : "https://github.com/wangkun611/anjian/issues"
+    },
+    "licenses" : [
+        {
+            "type" : "MIT",
+            "url" : "https://github.com/wangkun611/anjian/raw/master/LICENSE"
+        }
+    ],
+    "devDependencies": {
+        "mocha": "^3.1.2",
+        "screen-info": "^1.0.1"
+    },
+    "scripts": {
+        "test": "mocha test/*.test.js"
+    }
+}
