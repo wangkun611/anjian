@@ -3,14 +3,6 @@
 
 CKeyboard* g_keyboard = nullptr;
 CMouse*    g_mouse = nullptr;
-CKeyboard* CAnJian::keyboard()
-{
-    if (!g_keyboard) {
-        g_keyboard = new CKeyboard();
-    }
-
-    return g_keyboard;
-}
 
 CKeyboard* keyboard()
 {
@@ -28,4 +20,14 @@ CMouse* mouse()
     }
 
     return g_mouse;
+}
+
+CAJWindow* desktop()
+{
+    return CAJWindow::desktop();
+}
+
+void sleep(int ms)
+{
+    Sleep(ms);
 }

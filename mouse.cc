@@ -21,42 +21,42 @@ POINT CMouse::getCursorPos()
 }
 
 // 获取鼠标形状
-int GetCursorShape()
+int CMouse::getCursorShape()
 {
     return 0;
 }
 
 // 检测上次按过的鼠标键
-int getLastClick()
+int CMouse::getLastClick()
 {
     return 0;
 }
 
 // 左键单击
-bool leftClick()
+bool CMouse::leftClick()
 {
     return mouseClick(MOUSEEVENTF_LEFTDOWN, MOUSEEVENTF_LEFTUP, 1);
 }
 
 // 左键双击
-bool leftDoubleClick()
+bool CMouse::leftDoubleClick()
 {
     return mouseClick(MOUSEEVENTF_LEFTDOWN, MOUSEEVENTF_LEFTUP, 2);
 }
 
 // 锁定鼠标位置
-void lockMouse(int x, int y)
+void CMouse::lockMouse(int x, int y)
 {
 }
 
 // 中键单击
-bool middleClick ()
+bool CMouse::middleClick ()
 {
     return mouseClick(MOUSEEVENTF_MIDDLEDOWN, MOUSEEVENTF_MIDDLEUP, 1);
 }
 
 // 右键单击
-bool rightClick ()
+bool CMouse::rightClick ()
 {
     return mouseClick(MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP, 1);
 }
@@ -68,7 +68,7 @@ bool rightDoubleClick ()
 }
 
 // 鼠标滚轮
-bool mouseWheel(int wheelDelta)
+bool CMouse::mouseWheel(int wheelDelta)
 {
     POINT pt;
     if (!GetCursorPos(&pt)) {

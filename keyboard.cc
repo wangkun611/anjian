@@ -23,14 +23,22 @@ void CKeyboard::keyDown(int vkCode, int count)
 {
     INPUT input;
     input.type = INPUT_KEYBOARD;
-    input.ki.wVk = vkCode;
-    input.ki.wScan = vkCode;
-    input.ki.dwFlags = 0;
+    // unicode char
+    if (vkCode > 254) {
+        input.ki.wVk = 0;
+        input.ki.wScan = vkCode;
+        input.ki.dwFlags = KEYEVENTF_UNICODE;
+    } else {
+        input.ki.wVk = vkCode;
+        input.ki.wScan = vkCode;
+        input.ki.dwFlags = 0;
+    }
     input.ki.time = 0;
     input.ki.dwExtraInfo = 0;
     SendInput(1, &input, sizeof(INPUT));
 
     while (count > 1) {
+        Sleep(100);
         SendInput(1, &input, sizeof(INPUT));
         count--;
     }
@@ -44,20 +52,28 @@ bool CKeyboard::keyPress(int vkCode, int count)
 }
 
 // Ä£Äâ¼üÅÌ°´×¡
-void keyUp(int vkCode, int count)
+void CKeyboard::keyUp(int vkCode, int count)
 {
     INPUT input;
     input.type = INPUT_KEYBOARD;
-    input.ki.wVk = vkCode;
-    input.ki.wScan = vkCode;
-    input.ki.dwFlags = KEYEVENTF_KEYUP;
+    if (vkCode > 254) {
+        input.ki.wVk = 0;
+        input.ki.wScan = vkCode;
+        input.ki.dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP;
+    }
+    else {
+        input.ki.wVk = vkCode;
+        input.ki.wScan = vkCode;
+        input.ki.dwFlags = KEYEVENTF_KEYUP;
+    }
     input.ki.time = 0;
     input.ki.dwExtraInfo = 0;
     SendInput(1, &input, sizeof(INPUT));
 
     while (count > 1) {
-		SendInput(1, &input, sizeof(INPUT));
-		count--;
+        Sleep(100);
+        SendInput(1, &input, sizeof(INPUT));
+        count--;
     }
 }
 
